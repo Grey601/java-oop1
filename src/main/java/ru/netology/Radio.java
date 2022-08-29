@@ -2,7 +2,7 @@ package ru.netology;
 
 public class Radio {
 
-    public int currentRadioStation;
+    public int currentRadioStation = 3;
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
@@ -10,7 +10,7 @@ public class Radio {
 
     public void setCurrentRadioStation(int newCurrentRadioStation) {
         if (newCurrentRadioStation > 9) {
-            newCurrentRadioStation = currentRadioStation;
+            return;
         }
         currentRadioStation = newCurrentRadioStation;
     }
