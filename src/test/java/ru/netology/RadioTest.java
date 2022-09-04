@@ -82,6 +82,30 @@ public class RadioTest {
     }
 
     @Test
+    public void shouldSetVolume() {
+        ru.netology.Radio volume = new ru.netology.Radio();
+
+        volume.setCurrentVolume(7);
+
+        int expected = 7;
+        int actual = volume.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSetInvalidVolume() {
+        ru.netology.Radio volume = new ru.netology.Radio();
+
+        volume.setCurrentVolume(11);
+
+        int expected = 0;
+        int actual = volume.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldIncreaseVolume() {
         ru.netology.Radio volume = new ru.netology.Radio();
 
