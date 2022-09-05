@@ -1,12 +1,16 @@
 package ru.netology;
 
-public class Radio {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+//@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Radio {
     int numberOfRadioStations;
     public int numberOfDivisionsOfTheVolumeScale = 100;
-
     public int currentRadioStation = 3;
-
     public int currentVolume;
 
     public Radio(int numberOfRadioStations) {
@@ -17,21 +21,9 @@ public class Radio {
         this.numberOfRadioStations = 10 - 1;
     }
 
-    public int getCurrentRadioStation() {
-        return currentRadioStation;
-    }
-
     public int getNumberOfRadioStations() {
         this.numberOfRadioStations = numberOfRadioStations + 1;
         return numberOfRadioStations;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public int getNumberOfDivisionsOfTheVolumeScale() {
-        return numberOfDivisionsOfTheVolumeScale;
     }
 
     public void setCurrentRadioStation(int newCurrentRadioStation) {
@@ -71,5 +63,4 @@ public class Radio {
             currentVolume = currentVolume - 1;
         }
     }
-
 }
