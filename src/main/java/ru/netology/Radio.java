@@ -2,34 +2,51 @@ package ru.netology;
 
 public class Radio {
 
-    public int currentRadioStation = 3;
+    private int numberOfRadioStations;
+    private int currentRadioStation;
+    private int numberOfDivisionsOfTheVolumeScale = 100;
+    private int currentVolume;
 
-    public int currentVolume;
+    int getNumberOfRadioStations() {
+        return numberOfRadioStations;
+    }
 
-    public int getCurrentRadioStation() {
+    int getNumberOfDivisionsOfTheVolumeScale() {
+        return numberOfDivisionsOfTheVolumeScale;
+    }
+
+    int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public void setCurrentRadioStation(int newCurrentRadioStation) {
-        if (newCurrentRadioStation > 9) {
+    void setCurrentRadioStation(int newCurrentRadioStation) {
+        if (newCurrentRadioStation > numberOfRadioStations - 1) {
             return;
         }
         currentRadioStation = newCurrentRadioStation;
     }
 
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume > 10) {
+    int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume > numberOfDivisionsOfTheVolumeScale) {
             return;
         }
         currentVolume = newCurrentVolume;
     }
 
+    public Radio(int numberOfRadioStations) {
+        this.numberOfRadioStations = numberOfRadioStations;
+    }
+
+    public Radio() {
+        this.numberOfRadioStations = 10;
+    }
+
     public void setNextRadioStation() {
-        if (currentRadioStation < 9) {
+        if (currentRadioStation < numberOfRadioStations - 1) {
             currentRadioStation = currentRadioStation + 1;
         } else currentRadioStation = 0;
     }
@@ -37,11 +54,11 @@ public class Radio {
     public void setPrevRadioStation() {
         if (currentRadioStation > 0) {
             currentRadioStation = currentRadioStation - 1;
-        } else currentRadioStation = 9;
+        } else currentRadioStation = numberOfRadioStations - 1;
     }
 
     public void setIncreaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < numberOfDivisionsOfTheVolumeScale) {
             currentVolume = currentVolume + 1;
         }
     }
