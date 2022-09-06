@@ -20,7 +20,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetDefaultRadioStation() {
-        ru.netology.Radio station = new ru.netology.Radio(12);
+        ru.netology.Radio station = new ru.netology.Radio();
 
         int expected = 3;
         int actual = station.getCurrentRadioStation();
