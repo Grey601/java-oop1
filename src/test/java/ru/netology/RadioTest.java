@@ -21,7 +21,7 @@ public class RadioTest {
     public void shouldSetDefaultRadioStation() {
         ru.netology.Radio station = new ru.netology.Radio(12);
 
-        int expected = 3;
+        int expected = 0;
         int actual = station.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
@@ -39,11 +39,11 @@ public class RadioTest {
 
     @Test
     public void shouldNotSetInvalidRadioStation() {
-        ru.netology.Radio station = new ru.netology.Radio(12);
+        ru.netology.Radio station = new ru.netology.Radio(11);
 
-        station.setCurrentRadioStation(12);
+        station.setCurrentRadioStation(11);
 
-        int expected = 3;
+        int expected = 0;
         int actual = station.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
