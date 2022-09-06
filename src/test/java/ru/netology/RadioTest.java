@@ -1,8 +1,7 @@
 package ru.netology;
 
-import org.junit.jupiter.api.Test;
-
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class RadioTest {
 
@@ -20,9 +19,9 @@ public class RadioTest {
 
     @Test
     public void shouldSetDefaultRadioStation() {
-        ru.netology.Radio station = new ru.netology.Radio();
+        ru.netology.Radio station = new ru.netology.Radio(12);
 
-        int expected = 3;
+        int expected = 0;
         int actual = station.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
@@ -40,11 +39,11 @@ public class RadioTest {
 
     @Test
     public void shouldNotSetInvalidRadioStation() {
-        ru.netology.Radio station = new ru.netology.Radio(12);
+        ru.netology.Radio station = new ru.netology.Radio(11);
 
-        station.setCurrentRadioStation(12);
+        station.setCurrentRadioStation(11);
 
-        int expected = 3;
+        int expected = 0;
         int actual = station.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
@@ -187,5 +186,4 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
 }
