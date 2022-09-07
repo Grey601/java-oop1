@@ -7,7 +7,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetRadioStation() {
-        ru.netology.Radio station = new ru.netology.Radio();
+        ru.netology.Radio station = new ru.netology.Radio(12);
 
         station.setCurrentRadioStation(7);
 
@@ -18,12 +18,32 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldNotSetInvalidRadioStation() {
+    public void shouldSetDefaultRadioStation() {
+        ru.netology.Radio station = new ru.netology.Radio(12);
+
+        int expected = 0;
+        int actual = station.getCurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetDefaultNumberOfRadioStations() {
         ru.netology.Radio station = new ru.netology.Radio();
+
+        int expected = 10;
+        int actual = station.getNumberOfRadioStations();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSetInvalidRadioStation() {
+        ru.netology.Radio station = new ru.netology.Radio(11);
 
         station.setCurrentRadioStation(11);
 
-        int expected = 3;
+        int expected = 0;
         int actual = station.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
@@ -31,7 +51,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetNextRadioStation() {
-        ru.netology.Radio station = new ru.netology.Radio();
+        ru.netology.Radio station = new ru.netology.Radio(12);
 
         station.setCurrentRadioStation(6);
         station.setNextRadioStation();
@@ -44,9 +64,9 @@ public class RadioTest {
 
     @Test
     public void shouldSetNextRadioStationCyclical() {
-        ru.netology.Radio station = new ru.netology.Radio();
+        ru.netology.Radio station = new ru.netology.Radio(12);
 
-        station.setCurrentRadioStation(9);
+        station.setCurrentRadioStation(11);
         station.setNextRadioStation();
 
         int expected = 0;
@@ -57,7 +77,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetPrevRadioStation() {
-        ru.netology.Radio station = new ru.netology.Radio();
+        ru.netology.Radio station = new ru.netology.Radio(12);
 
         station.setCurrentRadioStation(4);
         station.setPrevRadioStation();
@@ -70,12 +90,12 @@ public class RadioTest {
 
     @Test
     public void shouldSetPrevRadioStationCyclical() {
-        ru.netology.Radio station = new ru.netology.Radio();
+        ru.netology.Radio station = new ru.netology.Radio(12);
 
         station.setCurrentRadioStation(0);
         station.setPrevRadioStation();
 
-        int expected = 9;
+        int expected = 11;
         int actual = station.getCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
@@ -83,7 +103,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetVolume() {
-        ru.netology.Radio volume = new ru.netology.Radio();
+        ru.netology.Radio volume = new ru.netology.Radio(4);
 
         volume.setCurrentVolume(7);
 
@@ -95,9 +115,9 @@ public class RadioTest {
 
     @Test
     public void shouldNotSetInvalidVolume() {
-        ru.netology.Radio volume = new ru.netology.Radio();
+        ru.netology.Radio volume = new ru.netology.Radio(4);
 
-        volume.setCurrentVolume(11);
+        volume.setCurrentVolume(101);
 
         int expected = 0;
         int actual = volume.getCurrentVolume();
@@ -106,8 +126,18 @@ public class RadioTest {
     }
 
     @Test
+    public void shouldShowNumberOfDivisionsOfTheVolumeScale() {
+        Radio volume = new Radio();
+
+        int expected = 100;
+        int actual = volume.getNumberOfDivisionsOfTheVolumeScale();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldIncreaseVolume() {
-        ru.netology.Radio volume = new ru.netology.Radio();
+        ru.netology.Radio volume = new ru.netology.Radio(4);
 
         volume.setCurrentVolume(4);
         volume.setIncreaseVolume();
@@ -120,12 +150,12 @@ public class RadioTest {
 
     @Test
     public void shouldNotIncreaseVolumeGreaterMaxValue() {
-        ru.netology.Radio volume = new ru.netology.Radio();
+        ru.netology.Radio volume = new ru.netology.Radio(4);
 
-        volume.setCurrentVolume(10);
+        volume.setCurrentVolume(100);
         volume.setIncreaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = volume.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -133,7 +163,7 @@ public class RadioTest {
 
     @Test
     public void shouldDecreaseVolume() {
-        ru.netology.Radio volume = new ru.netology.Radio();
+        ru.netology.Radio volume = new ru.netology.Radio(4);
 
         volume.setCurrentVolume(1);
         volume.setDecreaseVolume();
@@ -146,7 +176,7 @@ public class RadioTest {
 
     @Test
     public void shouldNotDecreaseVolumeLessMinValue() {
-        ru.netology.Radio volume = new ru.netology.Radio();
+        ru.netology.Radio volume = new ru.netology.Radio(4);
 
         volume.setCurrentVolume(0);
         volume.setDecreaseVolume();
@@ -156,5 +186,4 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
 }
